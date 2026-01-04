@@ -12,25 +12,28 @@ def process():
     dfstate['ENT'] = list(range(len(dfstate.index)))
 
     print(dfstate.columns.tolist())
+    #print(dfstate)
     totalpop=dfstate['POBTOT'].sum()
     maxstate=dfstate.idxmax()
     minstate=dfstate.idxmin()
     print("Total population: " + str(totalpop))
-    print(str(maxstate))
+    print(str(len(maxstate)))
     totpob=0
 
-    print(type(minstate))
+    #print(type(minstate))
 
     for i in range(len(dfstate)):
     #for i in range(1):
         state=dfstate.loc[i,["NOM_ENT ", "POBTOT"]]
-        totpob =totpob + state[1]
+        #totpob =totpob + state[1]
+        #print(type(state))
+        totpob =totpob + state.iloc[1]
 
     maxstate=dfstate["POBTOT"].idxmax()
     totpob= '{:,}'.format(totpob)
     maxnstate=dfstate.loc[maxstate,["POBTOT"]]
     nstate=dfstate.loc[maxstate,["NOM_ENT "]]
-    print("Total pob:" + str(totpob)+" " +str(maxnstate[0]) + " " + str(nstate[0]))
+    #print("Total pob:" + str(totpob)+" " +str(maxnstate[0]) + " " + str(nstate[0]))
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
